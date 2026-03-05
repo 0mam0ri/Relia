@@ -14,6 +14,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/0mam0ri/Relia/refs/he
     - Check If Friend 
     - Perfect Block
     - Punish Moves
+    - Hold Block Duration Setting
   - True M1 Reset
     - Delays Setting
   - No Dash EndLag
@@ -21,14 +22,16 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/0mam0ri/Relia/refs/he
     - Custom Bind
     - Custom Dash Lenght
     - Side or Straight Dash Mode 
-  - Auto Techs
+  - Tech Helper
     - Humbled Twisted
     - Instant Lee
     - Loop Dash
     - Instant Lethal
       - Shift Lock
       - Loop Dash  
-  - Kiba
+  - Auto Tech
+    - Kiba
+    - Supa 
   - Custom Gui
     - Custom Ultbar Text
     - Custom Ultbar Color
