@@ -15,6 +15,8 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/0mam0ri/Relia/refs/he
     - Perfect Block
     - Punish Moves
     - Hold Block Duration Setting
+    - Punish m1s
+    - Side Dash Prediction
   - True M1 Reset
     - Delays Setting
   - No Dash EndLag
@@ -42,6 +44,10 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/0mam0ri/Relia/refs/he
     - No Textures
     - Custom FOV
     - Custom Saturation
+    - No Capes
+    - No Auras
+    - No Smoke
+    - No Dash Rings
     - Death Counter ESP
   
 ## Our Support & Etc Server:
