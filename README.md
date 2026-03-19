@@ -1,9 +1,9 @@
-# Relia
+# KittyWare
 
-Relia is a powerful software for game called "The Strongest Battlgegrounds" on game called Roblox.
-Relia provides you a bunch of useful features to improve your gameplay.
+KittyWare is a powerful software for game called "The Strongest Battlgegrounds" on game called Roblox.
+KittyWare provides you a bunch of useful features to improve your gameplay.
 
-## Loadstring to load Relia: 
+## Loadstring to load KittyWare: 
 ```lua
 loadstring(game:HttpGet('https://raw.githubusercontent.com/0mam0ri/Relia/refs/heads/main/obf.lua'))()
 ```
@@ -52,5 +52,5 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/0mam0ri/Relia/refs/he
   
 ## Our Support & Etc Server:
 ```css
-discord.gg/MW5e86ZJ
+discord.gg/ebKdZTmvrR
 ```
