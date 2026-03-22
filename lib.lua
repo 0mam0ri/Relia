@@ -4498,14 +4498,11 @@ function sections:configloader(props)
 			v.title:Remove()
 		end
 		createdbuttons = {}
-		for i,v in pairs(listfiles(folder)) do
-			if v:sub(-4) == ".cfg" then
-				if i == 1 then
-					makebutton(v:sub(#tostring(folder) + 4, -5),true)
-				else
-					makebutton(v:sub(#tostring(folder) + 4, -5),false)
-				end
-			end
+		for i, v in ipairs(listfiles(folder)) do
+			local name = v:match("([^/\\]+)%.cfg$")
+			if not name then continue end
+
+			makebutton(name, i == 1)
 		end
 	end
 	--
@@ -4558,7 +4555,6 @@ function sections:configloader(props)
 	end)
 	--
 	load[3].MouseButton1Down:Connect(function()
-		print(folder .. "/" .. selected.name..".cfg")
 		self.library:loadconfig(folder .. "/" .. selected.name..".cfg")
 		load[2].BorderColor3 = self.library.theme.accent
 		task.wait(0.05)
@@ -4566,7 +4562,6 @@ function sections:configloader(props)
 	end)
 	--
 	delete[3].MouseButton1Down:Connect(function()
-		print(folder .. "/" .. selected.name..".cfg")
 		delfile(folder .. "/" .. selected.name..".cfg")
 		delete[2].BorderColor3 = self.library.theme.accent
 		task.wait(0.05)
@@ -4576,7 +4571,6 @@ function sections:configloader(props)
 	end)
 	--
 	save[3].MouseButton1Down:Connect(function()
-		print(folder .. "/" .. selected.name..".cfg")
 		writefile(folder .. "/" .. selected.name..".cfg", self.library:saveconfig())
 		save[2].BorderColor3 = self.library.theme.accent
 		task.wait(0.05)
@@ -4586,7 +4580,6 @@ function sections:configloader(props)
 	end)
 	--
 	create[3].MouseButton1Down:Connect(function()
-		print(folder .. "/" .. currentname..".cfg")
 		writefile(folder .. "/" .. currentname..".cfg", self.library:saveconfig())
 		create[2].BorderColor3 = self.library.theme.accent
 		task.wait(0.05)
