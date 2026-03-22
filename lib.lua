@@ -4500,10 +4500,10 @@ function sections:configloader(props)
 		createdbuttons = {}
 		for i,v in pairs(listfiles(folder)) do
 			if v:sub(-4) == ".cfg" then
-				if i == 1 then 
-					makebutton(v:sub(#tostring(folder)+2, -5),true)
+				if i == 1 then
+					makebutton(v:sub(#tostring(folder), -4),true)
 				else
-					makebutton(v:sub(#tostring(folder)+2, -5),false)
+					makebutton(v:sub(#tostring(folder), -4),false)
 				end
 			end
 		end
