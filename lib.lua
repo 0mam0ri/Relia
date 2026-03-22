@@ -392,7 +392,7 @@ function library:new(props)
 						else
 							ts:Create(outline, TweenInfo.new(0.5,Enum.EasingStyle.Quad,Enum.EasingDirection.In), {Position = UDim2.new(xx,xxx,yy,yyy)}):Play()
 						end
-						wait(0.5)
+						task.wait(0.5)
 						cooldown = false
 					else
 						cooldown = true
@@ -402,7 +402,7 @@ function library:new(props)
 						else
 							ts:Create(outline, TweenInfo.new(0.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out), {Position = saved}):Play()
 						end
-						wait(0.5)
+						task.wait(0.5)
 						cooldown = false
 					end
 				end
@@ -740,9 +740,9 @@ function library:loader(props)
 		close[2].BorderColor3 = Color3.fromRGB(168, 52, 235)
 		outline:TweenPosition(UDim2.new(-1.5,0,0.5,0),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.75,true)
 		closed()
-		wait(0.05)
+		task.wait(0.05)
 		close[2].BorderColor3 = Color3.fromRGB(12,12,12)
-		wait(0.7)
+		task.wait(0.7)
 		screen:Remove()
 	end)
 	--
@@ -750,9 +750,9 @@ function library:loader(props)
 		login[2].BorderColor3 = Color3.fromRGB(168, 52, 235)
 		outline:TweenPosition(UDim2.new(1.5,0,0.5,0),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.75,true)
 		logedin()
-		wait(0.05)
+		task.wait(0.05)
 		login[2].BorderColor3 = Color3.fromRGB(12,12,12)
-		wait(0.7)
+		task.wait(0.7)
 		screen:Remove()
 	end)
 	--
@@ -1749,7 +1749,7 @@ function sections:button(props)
 		callback()
 		outline.BorderColor3 = self.library.theme.accent
 		table.insert(self.library.themeitems["accent"]["BorderColor3"],outline)
-		wait(0.05)
+		task.wait(0.05)
 		outline.BorderColor3 = Color3.fromRGB(12, 12, 12)
 		local find = table.find(self.library.themeitems["accent"]["BorderColor3"],outline)
 		if find then
@@ -3280,7 +3280,7 @@ function sections:keybind(props)
 		if keybind.down == false then
 			outline.BorderColor3 = self.library.theme.accent
 			table.insert(self.library.themeitems["accent"]["BorderColor3"],outline)
-			wait()
+			task.wait()
 			keybind.down = true
 		end
 	end)
@@ -4558,36 +4558,40 @@ function sections:configloader(props)
 	end)
 	--
 	load[3].MouseButton1Down:Connect(function()
+		print(folder .. "/" .. selected.name..".cfg")
 		self.library:loadconfig(folder .. "/" .. selected.name..".cfg")
 		load[2].BorderColor3 = self.library.theme.accent
-		wait(0.05)
+		task.wait(0.05)
 		load[2].BorderColor3 = Color3.fromRGB(12,12,12)
 	end)
 	--
 	delete[3].MouseButton1Down:Connect(function()
+		print(folder .. "/" .. selected.name..".cfg")
 		delfile(folder .. "/" .. selected.name..".cfg")
 		delete[2].BorderColor3 = self.library.theme.accent
-		wait(0.05)
+		task.wait(0.05)
 		delete[2].BorderColor3 = Color3.fromRGB(12,12,12)
-		wait()
+		task.wait()
 		refresh()
 	end)
 	--
 	save[3].MouseButton1Down:Connect(function()
+		print(folder .. "/" .. selected.name..".cfg")
 		writefile(folder .. "/" .. selected.name..".cfg", self.library:saveconfig())
 		save[2].BorderColor3 = self.library.theme.accent
-		wait(0.05)
+		task.wait(0.05)
 		save[2].BorderColor3 = Color3.fromRGB(12,12,12)
-		wait()
+		task.wait()
 		refresh()
 	end)
 	--
 	create[3].MouseButton1Down:Connect(function()
+		print(folder .. "/" .. currentname..".cfg")
 		writefile(folder .. "/" .. currentname..".cfg", self.library:saveconfig())
 		create[2].BorderColor3 = self.library.theme.accent
-		wait(0.05)
+		task.wait(0.05)
 		create[2].BorderColor3 = Color3.fromRGB(12,12,12)
-		wait()
+		task.wait()
 		refresh()
 	end)
 	-- // button tbl
