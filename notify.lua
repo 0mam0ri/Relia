@@ -99,6 +99,13 @@ local DescriptionSettings = {
 
 local MaxWidth = (Container.AbsoluteSize.X - Padding - DescriptionPadding);
 
+local function ImageLabel(Image)
+	local ImageLabel = Instance.new("ImageLabel");
+	ImageLabel.Image = Image
+	ImageLabel.BackgroundTransparency = 1;
+	return ImageLabel;
+end
+
 local function Label(Text, Font, Size, Button)
 	local Label = Instance.new(string.format("Text%s", Button and "Button" or "Label"));
 	Label.Text = Text;
@@ -179,37 +186,52 @@ return {
 		local Properties = typeof(Properties) == "table" and Properties or {};
 		local Title = Properties.Title;
 		local Description = Properties.Description;
+		local Image = Properties.Image
 		local Duration = Properties.Duration or 5;
-		if (Title) or (Description) then -- Check that user has provided title and/or description
-			local Y = Title and 26 or 0;
-			if (Description) then
-				local TextSize = TextService:GetTextSize(Description, DescriptionSettings.Size, DescriptionSettings.Font, Vector2.new(0, 0));
-				for i = 1, math.ceil(TextSize.X / MaxWidth) do
-					Y += TextSize.Y;
-				end
-				Y += 8;
+
+		local Y = Title and 26 or 0;
+		if (Description) then
+			local TextSize = TextService:GetTextSize(Description, DescriptionSettings.Size, DescriptionSettings.Font, Vector2.new(0, 0));
+			for i = 1, math.ceil(TextSize.X / MaxWidth) do
+				Y += TextSize.Y;
 			end
-			local NewLabel = Round2px();
-			NewLabel.Size = UDim2.new(1, 0, 0, Y);
-			NewLabel.Position = UDim2.new(-1, 20, 0, CalculateBounds(CachedObjects).Y + (Padding * #CachedObjects));
-			if (Title) then
-				local NewTitle = TitleLabel(Title);
-				NewTitle.Size = UDim2.new(1, -10, 0, 26);
-				NewTitle.Position = UDim2.fromOffset(10, 0);
-				NewTitle.Parent = NewLabel;
-			end
-			if (Description) then
-				local NewDescription = DescriptionLabel(Description);
-				NewDescription.TextWrapped = true;
-				NewDescription.Size = UDim2.fromScale(1, 1) + UDim2.fromOffset(-DescriptionPadding, Title and -26 or 0);
-				NewDescription.Position = UDim2.fromOffset(10, Title and 26 or 0);
-				NewDescription.TextYAlignment = Enum.TextYAlignment[Title and "Top" or "Center"];
-				NewDescription.Parent = NewLabel;
-			end
-			Shadow2px().Parent = NewLabel;
-			NewLabel.Parent = Container;
-			table.insert(InstructionObjects, {NewLabel, 0, false});
-			coroutine.wrap(FadeOutAfter)(NewLabel, Duration);
+			Y += 8;
 		end
+		local NewLabel = Round2px();
+		NewLabel.Size = UDim2.new(1, 0, 0, Y);
+		NewLabel.Position = UDim2.new(-1, 20, 0, CalculateBounds(CachedObjects).Y + (Padding * #CachedObjects));
+
+		local NewTitle = TitleLabel(Title);
+		if Image then
+			NewTitle.Size = UDim2.new(1, -10, 0, 26);
+			NewTitle.Position = UDim2.new(0.2, 10, 0, 0);
+		else
+			NewTitle.Size = UDim2.new(1, -10, 0, 26);
+			NewTitle.Position = UDim2.fromOffset(10, 0);
+		end
+		NewTitle.Parent = NewLabel;
+
+		local NewDescription = DescriptionLabel(Description);
+		NewDescription.TextWrapped = true;
+		if Image then
+			NewDescription.Size = UDim2.fromScale(1, 1) + UDim2.fromOffset(-DescriptionPadding, Title and -26 or 0);
+			NewDescription.Position = UDim2.new(0.2, 10, 0, Title and 26 or 0);
+		else
+			NewDescription.Size = UDim2.fromScale(1, 1) + UDim2.fromOffset(-DescriptionPadding, Title and -26 or 0);
+			NewDescription.Position = UDim2.fromOffset(10, Title and 26 or 0);
+		end
+		NewDescription.TextYAlignment = Enum.TextYAlignment[Title and "Top" or "Center"];
+		NewDescription.Parent = NewLabel;
+
+		if (Image) then
+			local NewImage = ImageLabel(Image);
+			NewImage.Size = UDim2.fromScale(0.2, 1);
+			NewImage.Position = UDim2.fromOffset(0,0);
+			NewImage.Parent = NewLabel;
+		end
+		Shadow2px().Parent = NewLabel;
+		NewLabel.Parent = Container;
+		table.insert(InstructionObjects, {NewLabel, 0, false});
+		coroutine.wrap(FadeOutAfter)(NewLabel, Duration);
 	end,
 }
