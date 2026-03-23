@@ -3300,6 +3300,9 @@ function sections:keybind(props)
 	uis.InputBegan:Connect(function(Input, isChat)
 		local uit = Input.UserInputType
 
+		print(keybind.current[2])
+		print(uit)
+
 		if keybind.down then
 			if uit == Enum.UserInputType.Keyboard then
 				local capd = utility.capatalize(Input.KeyCode.Name)
