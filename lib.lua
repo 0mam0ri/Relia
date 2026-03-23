@@ -3314,7 +3314,7 @@ function sections:keybind(props)
 				value.Text = "MB3"
 				turn("UserInputType", uit)
 			end
-		elseif (keybind.current[2] == Input.KeyCode.Name or keybind.current[2] == uit) and not run and not isChat then
+		elseif (keybind.current[2] == Input.KeyCode.Name or keybind.current[1] == uit) and not run and not isChat then
 			run = true
 			callback()
 			run = false
