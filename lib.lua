@@ -3129,6 +3129,7 @@ function sections:keybind(props)
 	--
 	local default = ".."
 	local typeis = nil
+	local run
 	--
 	if typeof(def) == "EnumItem" then
 		if def == Enum.UserInputType.MouseButton1 then
@@ -3335,8 +3336,10 @@ function sections:keybind(props)
 					callback(Input)
 				end
 			end
-		elseif not isChat then
-			print("New callback???")
+		elseif not run and not isChat then
+			run = true
+			print(name)
+			run = false
 		end
 	end)
 	--
