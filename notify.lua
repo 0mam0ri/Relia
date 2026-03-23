@@ -164,12 +164,12 @@ local function ResetObjects()
 end
 
 local function FadeOutAfter(Object, Seconds)
-	wait(Seconds);
+	task.wait(Seconds);
 	FadeProperty(Object);
 	for _, SubObj in next, Object:GetDescendants() do
 		FadeProperty(SubObj);
 	end
-	wait(0.25);
+	task.wait(0.25);
 	table.remove(InstructionObjects, FindIndexByDependency(InstructionObjects, Object));
 	ResetObjects();
 end
