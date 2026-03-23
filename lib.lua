@@ -4054,7 +4054,6 @@ end
 function sections:configloader(props)
 	-- // properties
 	local folder = props.folder or props.Folder
-	local callback = props.callback or props.Callback
 	-- // variables
 	local configloader = {}
 	-- // main
@@ -4531,7 +4530,6 @@ function sections:configloader(props)
 		load[2].BorderColor3 = self.library.theme.accent
 		task.wait(0.05)
 		load[2].BorderColor3 = Color3.fromRGB(12,12,12)
-		callback(readfile(folder .. "/" .. selected.name..".cfg"))
 	end)
 	--
 	delete[3].MouseButton1Down:Connect(function()
