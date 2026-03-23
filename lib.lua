@@ -3310,6 +3310,7 @@ function sections:keybind(props)
 	end
 	--
 	uis.InputBegan:Connect(function(Input, isChat)
+		print(keybind.current)
 		if keybind.down then
 			if Input.UserInputType == Enum.UserInputType.Keyboard then
 				local capd = utility.capatalize(Input.KeyCode.Name)
@@ -3336,7 +3337,7 @@ function sections:keybind(props)
 					callback(Input)
 				end
 			end
-		elseif not run and not isChat then
+		elseif keybind.current == Input.KeyCode and not run and not isChat then
 			run = true
 			print(name)
 			run = false
