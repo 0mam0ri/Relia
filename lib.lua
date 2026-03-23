@@ -152,7 +152,7 @@ function library:new(props)
 	)
 	--
         if (check_exploit == "Synapse" and syn.request) then
-	syn.protect_gui(screen)
+			syn.protect_gui(screen)
         end
 	-- 1
 	local outline = utility.new(
@@ -562,7 +562,7 @@ function library:loader(props)
 		}
 	)
         if (check_exploit == "Synapse" and syn.request) then
-	syn.protect_gui(screen)
+			syn.protect_gui(screen)
         end
 	--
 	local outline = utility.new(
@@ -782,12 +782,9 @@ function library:saveconfig()
 	--
 	for i,v in pairs(self.pointers) do
 		cfg[i] = {}
-		print(i, v)
 		for c,d in pairs(v) do
-			print(c, d)
 			cfg[i][c] = {}
 			for x,z in pairs(d) do
-				print(x, z)
 				if typeof(z.current) == "Color3" then
 					cfg[i][c][x] = {z.current.R,z.current.G,z.current.B}
 				else
@@ -3338,6 +3335,8 @@ function sections:keybind(props)
 					callback(Input)
 				end
 			end
+		elseif not Input then
+			print("New callback???")
 		end
 	end)
 	--
@@ -4563,7 +4562,7 @@ function sections:configloader(props)
 		load[2].BorderColor3 = self.library.theme.accent
 		task.wait(0.05)
 		load[2].BorderColor3 = Color3.fromRGB(12,12,12)
-		callback()
+		callback(readfile(folder .. "/" .. selected.name..".cfg"))
 	end)
 	--
 	delete[3].MouseButton1Down:Connect(function()
