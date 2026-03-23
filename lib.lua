@@ -3132,21 +3132,9 @@ function sections:keybind(props)
 	local run
 	--
 	if typeof(def) == "EnumItem" then
-		if def == Enum.UserInputType.MouseButton1 then
-			if allowed == 1 then
-				default = "MB1"
-				typeis = "UserInputType"
-			end
-		elseif def == Enum.UserInputType.MouseButton2 then
-			if allowed == 1 then
-				default = "MB2"
-				typeis = "UserInputType"
-			end
-		elseif def == Enum.UserInputType.MouseButton3 then
-			if allowed == 1 then
-				default = "MB3"
-				typeis = "UserInputType"
-			end
+		if def == Enum.UserInputType.MouseButton3 and allowed == 1 then
+			default = "MB3"
+			typeis = "UserInputType"
 		else
 			local capd = utility.capatalize(def.Name)
 			if #capd > 1 then
@@ -3321,16 +3309,14 @@ function sections:keybind(props)
 					value.Text = Input.KeyCode.Name
 				end
 				turn("KeyCode",Input.KeyCode)
-				callback(Input.KeyCode)
 			end
 			if allowed == 1 and uit == Enum.UserInputType.MouseButton3 then
 				value.Text = "MB3"
 				turn("UserInputType", uit)
-				callback(uit)
 			end
-		elseif (keybind.current[2] == Input.KeyCode.Name or keybind.current[1] == uit) and not run and not isChat then
+		elseif (keybind.current[2] == Input.KeyCode.Name or keybind.current[2] == uit) and not run and not isChat then
 			run = true
-			print(name)
+			callback()
 			run = false
 		end
 	end)
@@ -3365,21 +3351,9 @@ function keybinds:set(key)
 			--
 			local default = ".."
 			--
-			if key == Enum.UserInputType.MouseButton1 then
-				if keybind.allowed == 1 then
-					default = "MB1"
-					typeis = "UserInputType"
-				end
-			elseif key == Enum.UserInputType.MouseButton2 then
-				if keybind.allowed == 1 then
-					default = "MB2"
-					typeis = "UserInputType"
-				end
-			elseif key == Enum.UserInputType.MouseButton3 then
-				if keybind.allowed == 1 then
-					default = "MB3"
-					typeis = "UserInputType"
-				end
+			if key == Enum.UserInputType.MouseButton3 and keybind.allowed == 1 then
+				default = "MB3"
+				typeis = "UserInputType"
 			else
 				local capd = utility.capatalize(key.Name)
 				if #capd > 1 then
