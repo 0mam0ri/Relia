@@ -3308,7 +3308,7 @@ function sections:keybind(props)
 		end
 	end
 	--
-	uis.InputBegan:Connect(function(Input)
+	uis.InputBegan:Connect(function(Input, isChat)
 		if keybind.down then
 			if Input.UserInputType == Enum.UserInputType.Keyboard then
 				local capd = utility.capatalize(Input.KeyCode.Name)
@@ -3335,7 +3335,7 @@ function sections:keybind(props)
 					callback(Input)
 				end
 			end
-		elseif not Input then
+		elseif not isChat then
 			print("New callback???")
 		end
 	end)
