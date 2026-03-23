@@ -111,6 +111,7 @@ local function Label(Text, Font, Size, Button)
 	Label.Text = Text;
 	Label.Font = Font;
 	Label.TextSize = Size;
+	Label.TextWrapped = true;
 	Label.BackgroundTransparency = 1;
 	Label.TextXAlignment = Enum.TextXAlignment.Left;
 	Label.RichText = true;
