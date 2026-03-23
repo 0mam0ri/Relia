@@ -5,7 +5,7 @@ KittyWare provides you a bunch of useful features to improve your gameplay.
 
 ## Loadstring to load KittyWare: 
 ```lua
-loadstring(game:HttpGet('https://raw.githubusercontent.com/0mam0ri/Relia/refs/heads/main/obf.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/0mam0ri/KittyWare/refs/heads/main/obf.lua'))()
 ```
 
 ## Features
