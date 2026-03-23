@@ -3324,19 +3324,21 @@ function sections:keybind(props)
 			if allowed == 1 then
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 then
 					value.Text = "MB1"
-					turn("UserInputType",Input)
-					callback(Input)
+					turn("UserInputType", Input.UserInputType)
+					callback(Input.UserInputType)
 				elseif Input.UserInputType == Enum.UserInputType.MouseButton2 then
 					value.Text = "MB2"
-					turn("UserInputType",Input)
-					callback(Input)
+					turn("UserInputType", Input.UserInputType)
+					callback(Input.UserInputType)
 				elseif Input.UserInputType == Enum.UserInputType.MouseButton3 then
 					value.Text = "MB3"
-					turn("UserInputType",Input)
-					callback(Input)
+					turn("UserInputType", Input.UserInputType)
+					callback(Input.UserInputType)
 				end
 			end
-		elseif keybind.current[2] == (Input.KeyCode.Name or Input.UserInputType) and tostring(Input.UserInputType) == keybind.current[1] and not run and not isChat then
+		elseif (keybind.current[2] == Input.KeyCode.Name or keybind.current[2] == Input.UserInputType) 
+		and (tostring(Input.UserInputType) == keybind.current[1] or tostring(Input.UserInputType) == keybind.current[1]) 
+		and not run and not isChat then
 			run = true
 			print(name)
 			run = false
